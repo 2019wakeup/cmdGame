@@ -10,6 +10,13 @@ namespace cmdGame
     {
         static void Main(string[] args)
         {
+            var game = new Game();
+            game.Awake();
+            for (int i = 0; i < 20; i++)
+            {
+                game.Update();
+            }
+            Console.ReadLine();
         }
     }
 }

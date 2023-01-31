@@ -76,7 +76,7 @@
     <Compile Include="Game\Component\Skill.cs" />
     <Compile Include="Game\Render\UnityRenderEngine.cs" />
     <Compile Include="Game\Util\Vector2.cs" />
-    <Compile Include="Game\World.cs" />
+    <Compile Include="Game\Logic\World.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
