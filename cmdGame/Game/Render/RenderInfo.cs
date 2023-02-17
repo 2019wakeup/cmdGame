@@ -5,7 +5,7 @@
     {
         public Vector2 pos;
         public int type;
-        public int Color;
+        public int color;
     }
     
 }

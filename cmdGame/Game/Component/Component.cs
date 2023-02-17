@@ -6,13 +6,19 @@ namespace cmdGame
 {
     public class Component
     {
+        protected Actor actor;
+
+        public void Bind(Actor actor)
+        {
+            this.actor = actor;//将特定actor类型传入component
+        }
         public virtual void Awake() 
         {
-            Console.WriteLine($"{GetType().Name} Awake");
+            Debug.Log($"{GetType().Name} Awake");
         }
         public virtual void Update(float dt) 
         {
-            Console.WriteLine($"\t\t{GetType().Name} Update");
+            Debug.Log($"\t  \t  {GetType().Name} Update");
         }//由于子类要进行重写,用virtual
     }
     

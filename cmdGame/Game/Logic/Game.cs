@@ -4,17 +4,12 @@ using System.CodeDom;
 namespace cmdGame
 
 {
-    public class Time
-    {
-        public static float deltaTime;
-        public static int FrameCount = 0;
-    }
     public class Game:ILifeCycle
     {
         public World world;
         public EGameState state;
         public void Awake() {
-            Console.WriteLine($"{GetType().Name} Awake");
+            Debug.Log($"{GetType().Name} Awake");
             world = new World();
             world.Awake();
             //TODO create actors
@@ -34,16 +29,18 @@ namespace cmdGame
 
         Actor CreateEnemy(int health, int damage)
         {
-            var enemy = new Enemy();
+
+            var enemy = new Enemy();//为什么一个enemy可以有多个同名实例？
             InitActor(enemy,health, damage);
             enemy.AddComponent(new EnemyAI());
             return enemy;
         }
 
-        private static void InitActor( Actor actor,int health, int damage)
+        private void InitActor(Actor actor,int health, int damage)
         {
             actor.damage = health;
             actor.health = damage;
+            actor.pos=world.GetRandomPos();
             actor.AddComponent(new HurtEffect());
             actor.AddComponent(new Skill());
         }
@@ -52,7 +49,7 @@ namespace cmdGame
         public void Update() 
         {
             Time.deltaTime = 0.1f;
-            Console.WriteLine($"{GetType().Name} Update FrameCount{Time.FrameCount}");
+            Debug.Log($"{GetType().Name} Update FrameCount{Time.FrameCount}");
             world.Update();
             Time.FrameCount++;
         }
