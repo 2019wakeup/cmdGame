@@ -38,6 +38,7 @@ namespace cmdGame
 
         private void InitActor(Actor actor,int health, int damage)
         {
+            actor.world = world;
             actor.damage = health;
             actor.health = damage;
             actor.pos=world.GetRandomPos();
@@ -48,10 +49,27 @@ namespace cmdGame
 
         public void Update() 
         {
-            Time.deltaTime = 0.1f;
             Debug.Log($"{GetType().Name} Update FrameCount{Time.FrameCount}");
             world.Update();
             Time.FrameCount++;
+        }
+
+
+        public bool OnUpdate(double timeSinceStart,double deltaTime)
+        {
+            Time.deltaTime=(float)deltaTime;
+            Update();
+            return false;
+        }
+        public void OnGetInput(char inputCh)
+        {
+            switch (inputCh)
+            {
+                case 'w':InputManager.inputVec = new Vector2(0, 1);break;
+                case 's':InputManager.inputVec = new Vector2(0, -1);break;
+                case 'a':InputManager.inputVec = new Vector2(-1, 0);break;
+                case 'd':InputManager.inputVec = new Vector2(1, 0);break;
+            }
         }
     }
 

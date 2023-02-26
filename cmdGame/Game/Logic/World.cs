@@ -68,8 +68,8 @@ namespace cmdGame
         {
             if(pos.x<xRange.x)pos.x= xRange.x;
             if(pos.x>xRange.y)pos.x= xRange.y;
-            if(pos.y<xRange.y)pos.y= yRange.x;
-            if(pos.y>xRange.y)pos.y= yRange.x;
+            if(pos.y<xRange.x)pos.y= yRange.x;
+            if(pos.y>xRange.y)pos.y= yRange.y;
             return pos;
         }
     }
